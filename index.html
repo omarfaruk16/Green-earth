@@ -78,7 +78,7 @@
                 <div class="lg: flex-1">
                     <img src="assets/about.png" alt="">
                 </div>
-                <div class="lg:flex-1 sm:mt-1">
+                <div class="lg:flex-1 pt-4">
                     <p>Green Earth is a global tree plantation initiative dedicated to fighting climate change. Since
                         our start, we’ve planted over 500,000 trees worldwide. By joining our campaign, you help restore
                         forests, create habitats for wildlife, and combat global warming.</p>
@@ -92,8 +92,52 @@
         </div>
     </section>
 
+    <section class="bg-[#CFF0DC] py-10 lg:py-15 px-5 lg:px-25">
+        <h1 class="text-black font-semibold text-2xl text-center py-5">Our Impact</h1>
+        <div class="grid grid-rows-1 lg:grid-cols-3 gap-5 lg:gap-12">
+            <div class="p-10  bg-gray-100 rounded-lg text-center">
+                <p class="text-xl font-bold text-[#15803D]">500K+</p>
+                <p>Trees Planted</p>
+            </div>
+            <div class="p-10 bg-gray-100 rounded-lg text-center">
+                <p class="text-xl font-bold text-[#15803D]">500K+</p>
+                <p>Trees Planted</p>
+            </div>
+            <div class="p-10 bg-gray-100 rounded-lg text-center">
+                <p class="text-xl font-bold text-[#15803D]">500K+</p>
+                <p>Trees Planted</p>
+            </div>
+        </div>
+    </section>
 
+    <section class="py-10 lg:py-[80px] bg-[#166534]">
+        <h1 class="text-white font-semibold text-2xl text-center ">Plant a Tree Today</h1>
+        <div class="pt-10 flex justify-center ">
+            <form class="fieldset bg-[#15803D] rounded-box max-w-md w-full border p-10 ">
+                <fieldset class="fieldset ">
+                    <input type="text" class="input validator w-full" placeholder="Your Name" required />
+                    <p class="validator-hint hidden">Required</p>
+                </fieldset>
+                <fieldset class="fieldset">
+                    <input type="email" class="input validator w-full" placeholder="Yopur Email Address" required />
+                    <p class="validator-hint hidden">Required</p>
+                </fieldset>
+                <select class="select validator w-full" required>
+                    <option disabled selected value="">Number of Trees</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select>
 
+                <button class="btn rounded-3xl bg-yellow-400 text-green-700 border-yellow-400 my-4" type="submit">Donate Now</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="bg-[#14532D] py-5">
+        <p class="text-white text-center">© 2025 Green Earth. All Rights Reserved.</p>
+    </footer>
     <script src="scripts.js"></script>
 </body>
 
