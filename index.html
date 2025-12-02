@@ -71,16 +71,19 @@
 
     </section>
 
-    <section class="p-10 bg-[#F0FDF4] lg:grid lg:grid-cols-[1fr_5fr_1fr]">
-        <div>
+    <section class="p-10 bg-[#F0FDF4] lg:grid lg:grid-cols-[1fr_4fr_1fr] lg:gap-5">
+        <div class="">
             <h1 class="text-lg font-semibold mb-5">Categories</h1>
-            <button id="alltreebtn" onclick="alltreebtn()" class="btn bg-transparent border-none hover:bg-green-700 hover:text-white ">All Trees</button>
+            <button id="alltreebtn" onclick="alltreebtn()"
+                class="btn bg-transparent border-none hover:bg-green-700 hover:text-white ">All Trees</button>
             <div id="categories_ber"></div>
         </div>
-        <div id="tree-details" class="max-w-[850px] lg:grid lg:grid-cols-3 gap-7">
-            
+        <div id="tree-details" class="lg:grid lg:grid-cols-3 gap-7 ">
+
         </div>
-        <div></div>
+        <div class="">
+            <h1 class="text-lg font-semibold mb-5">Your Cart</h1>
+        </div>
     </section>
 
 
@@ -143,10 +146,16 @@
                     <option>4</option>
                 </select>
 
-                <button class="btn rounded-3xl bg-yellow-400 text-green-700 border-yellow-400 my-4" type="submit">Donate Now</button>
+                <button class="btn rounded-3xl bg-yellow-400 text-green-700 border-yellow-400 my-4" type="submit">Donate
+                    Now</button>
             </form>
         </div>
     </section>
+
+    <!-- Open the modal using ID.showModal() method -->
+    <dialog id="my_modal_1" class="modal">
+        
+    </dialog>
 
     <footer class="bg-[#14532D] py-5">
         <p class="text-white text-center">© 2025 Green Earth. All Rights Reserved.</p>
