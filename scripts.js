@@ -25,7 +25,8 @@ const activate = (id) => {
   activeBtn.classList.add("active");
 };
 
-const platLoad = () => {
+const plantLoad = () => {
+    loadingStatus(true)
   const url = "https://openapi.programming-hero.com/api/plants";
   fetch(url).then((res) =>
     res.json().then((data) => displayPlants(data.plants))
@@ -54,9 +55,11 @@ const displayPlants = (plants) => {
         `;
     platSection.append(plantCard);
   });
+  loadingStatus(false)
 };
 
 const loadCategoryPlant = (id) => {
+    loadingStatus(true)
   const url = `https://openapi.programming-hero.com/api/category/${id}`;
   fetch(url).then((res) =>
     res.json().then((data) => {
@@ -74,7 +77,7 @@ const alltreebtn = () => {
   });
   const activeBtn = document.getElementById("alltreebtn");
   activeBtn.classList.add("active");
-  platLoad();
+  plantLoad();
 };
 
 const loadSinglePlant = (id) => {
@@ -111,5 +114,16 @@ const openmodal = (id) => {
   my_modal_1.showModal();
 };
 
-platLoad();
+const loadingStatus = (status) =>{
+    if (status){
+        document.getElementById("tree-details").classList.add("hidden")
+        document.getElementById("loading").classList.remove("hidden")
+    }
+    else{
+        document.getElementById("tree-details").classList.remove("hidden")
+        document.getElementById("loading").classList.add("hidden")
+    }
+}
+
+plantLoad();
 categoriLoad();
