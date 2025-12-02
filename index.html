@@ -74,7 +74,7 @@
     <section class="p-10 bg-[#F0FDF4] lg:grid lg:grid-cols-[1fr_5fr_1fr]">
         <div>
             <h1 class="text-lg font-semibold mb-5">Categories</h1>
-            <button onclick="platLoad()" class="btn bg-transparent border-none hover:bg-green-700 hover:text-white ">All Trees</button>
+            <button id="alltreebtn" onclick="alltreebtn()" class="btn bg-transparent border-none hover:bg-green-700 hover:text-white ">All Trees</button>
             <div id="categories_ber"></div>
         </div>
         <div id="tree-details" class="max-w-[850px] lg:grid lg:grid-cols-3 gap-7">
@@ -126,7 +126,7 @@
     <section class="py-10 lg:py-[80px] bg-[#166534]">
         <h1 class="text-white font-semibold text-2xl text-center ">Plant a Tree Today</h1>
         <div class="pt-10 flex justify-center ">
-            <form class="fieldset bg-[#15803D] rounded-box max-w-md w-full border p-10 ">
+            <form class="fieldset bg-[#15803D] rounded-box max-w-md w-full p-10 ">
                 <fieldset class="fieldset ">
                     <input type="text" class="input validator w-full" placeholder="Your Name" required />
                     <p class="validator-hint hidden">Required</p>

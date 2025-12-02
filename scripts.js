@@ -10,10 +10,21 @@ const displayCategories = (categories) =>{
     category_section.innerHTML = ""
     categories.forEach(element => {
         const new_category = document.createElement("div")
-        new_category.innerHTML = `<a class="btn bg-transparent border-none hover:bg-green-700 hover:text-white">${element.category_name}</a>`
+        new_category.innerHTML = `<button onclick="loadCategoryPlant(${element.id})" id="btn-${element.id}"  class="categoty-btn btn bg-transparent border-none hover:bg-green-700 hover:text-white">${element.category_name}</button>`
         category_section.append(new_category)
     });
 }
+
+const activate = (id) =>{
+    const allBtn = document.querySelectorAll(".categoty-btn")
+    document.getElementById("alltreebtn").classList.remove("active")
+    allBtn.forEach(element => {
+        element.classList.remove("active")
+    });
+    const activeBtn = document.getElementById(`btn-${id}`)
+    activeBtn.classList.add("active")
+}
+
 
 const platLoad = () =>{
     const url = "https://openapi.programming-hero.com/api/plants"
@@ -48,9 +59,27 @@ const displayPlants = (plants) =>{
     
 }
 
+const loadCategoryPlant = (id) =>{
+    const url = `https://openapi.programming-hero.com/api/category/${id}`
+    console.log(url)
+    fetch(url)
+    .then((res) => res.json()
+    .then((data) => {
+        displayPlants(data.plants)
+        activate(id)
+    }))} 
 
 
 
+const alltreebtn = () =>{
+    const allBtn = document.querySelectorAll(".categoty-btn")
+    allBtn.forEach(element => {
+        element.classList.remove("active")
+    });
+    const activeBtn = document.getElementById("alltreebtn")
+    activeBtn.classList.add("active")
+    platLoad()
+}
 platLoad()
 categoriLoad()
 
