@@ -1,3 +1,7 @@
+const History = [];
+let total_tree_price = 0;
+let cart_number = 0;
+
 const categoriLoad = () => {
   const url = "https://openapi.programming-hero.com/api/categories";
   fetch(url).then((res) =>
@@ -26,7 +30,7 @@ const activate = (id) => {
 };
 
 const plantLoad = () => {
-    loadingStatus(true)
+  loadingStatus(true);
   const url = "https://openapi.programming-hero.com/api/plants";
   fetch(url).then((res) =>
     res.json().then((data) => displayPlants(data.plants))
@@ -50,16 +54,16 @@ const displayPlants = (plants) => {
                     <p class="py-2 px-3 bg-[#DCFCE7] rounded-3xl text-[#13803D] font-semibold text-base">${plant.category}</p>
                     <p class="font-bold text-lg">৳ ${plant.price}</p>
                 </div>
-                <button class="btn bg-green-700 rounded-4xl border-none text-white w-full">Add to Cart</button>
+                <button onclick="addToCart('${plant.name}',${plant.price})" class="btn bg-green-700 rounded-4xl border-none text-white w-full">Add to Cart</button>
             </div>
         `;
     platSection.append(plantCard);
   });
-  loadingStatus(false)
+  loadingStatus(false);
 };
 
 const loadCategoryPlant = (id) => {
-    loadingStatus(true)
+  loadingStatus(true);
   const url = `https://openapi.programming-hero.com/api/category/${id}`;
   fetch(url).then((res) =>
     res.json().then((data) => {
@@ -114,16 +118,51 @@ const openmodal = (id) => {
   my_modal_1.showModal();
 };
 
-const loadingStatus = (status) =>{
-    if (status){
-        document.getElementById("tree-details").classList.add("hidden")
-        document.getElementById("loading").classList.remove("hidden")
-    }
-    else{
-        document.getElementById("tree-details").classList.remove("hidden")
-        document.getElementById("loading").classList.add("hidden")
-    }
+const loadingStatus = (status) => {
+  if (status) {
+    document.getElementById("tree-details").classList.add("hidden");
+    document.getElementById("loading").classList.remove("hidden");
+  } else {
+    document.getElementById("tree-details").classList.remove("hidden");
+    document.getElementById("loading").classList.add("hidden");
+  }
+};
+
+const addToCart = (name, price) => {
+  History.push({
+    tree_name: name,
+    tree_price: price,
+  });
+  total_tree_price += price
+  seeCartHistory();
+}
+const seeCartHistory = () => {
+  const cart_section = document.getElementById("cart-section");
+  cart_section.innerHTML = ""; // prevent duplicates
+
+  History.forEach((element, index) => {
+    const div = document.createElement("div");
+    div.innerHTML = `<div class="flex justify-between items-center rounded-lg bg-green-100 p-4 mb-3">
+        <div>
+            <h3 class="font-semibold text-lg">${element.tree_name}</h3>
+            <p class="text-base">${element.tree_price}</p>
+        </div>
+        <button onclick = deleteHistory(${index}) class ="fa-solid fa-xmark text-red-600"></button>
+    </div>`;
+    cart_section.append(div);
+  });
+
+  const total_section = document.getElementById("total");
+  total_section.innerHTML = `
+    <p class="text-lg font-semibold text-right">Total : ৳${total_tree_price}</p>
+  `;};
+
+const deleteHistory = (index) =>{
+  total_tree_price -= History[index].tree_price;
+  History.splice(index, 1);
+  seeCartHistory();
 }
 
+console.log(History);
 plantLoad();
 categoriLoad();
